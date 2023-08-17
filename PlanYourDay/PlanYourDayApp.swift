@@ -9,9 +9,16 @@ import SwiftUI
 
 @main
 struct PlanYourDayApp: App {
-    var body: some Scene {
-        WindowGroup {
-            ContentView()
-        }
-    }
+    
+       @StateObject var listViewModel: ListViewModel = ListViewModel()
+       
+       var body: some Scene {
+           WindowGroup {
+               NavigationView {
+                   ListView()
+               }
+               .navigationViewStyle(StackNavigationViewStyle())
+               .environmentObject(listViewModel)
+           }
+       }
 }
